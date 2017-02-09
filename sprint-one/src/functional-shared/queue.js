@@ -2,8 +2,8 @@ var Queue = function() {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
   var obj = {
-    count: 0,
-    currentIndex: 0,
+    head: 0,
+    tail: 0,
     storage: {}
   };
   _.extend(obj, queueMethods);
@@ -13,26 +13,27 @@ var Queue = function() {
 
 var queueMethods = {
 
-  enqueue: function() {
-    this.storage[this.currentIndex];
-    this.count++;
-    this.currentIndex++;
-
+  enqueue: function(value) {
+    this.storage[this.tail] = value;
+    this.tail++;
+    
   },
 
   dequeue: function() {
-    if (this.count !== 0) {
-      this.count--;
+    //check to make sure that queue is not empty
+    //store head value to be beheaded in a variable
+    //delete head key value pair
+    //return the deleted head
+    if (this.head < this.tail) {
+      var toBeDequeued = this.storage[this.head];
+      delete this.storage[this.head];
+      this.head++;
+      return toBeDequeued;
     }
-    var firstOut = this.storage[Math.min.apply(null, Object.keys(this.storage))];
-    console.log(firstOut);
-    delete this.storage[Math.min.apply(null, Object.keys(this.storage))];
-    return this.firstOut;
-
   },
 
   size: function() {
-    return this.count;
+    return this.tail - this.head;
   }
 
 };
