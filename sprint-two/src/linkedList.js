@@ -16,9 +16,38 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
+    //check if list is empty
+    //remove head
+    //assign head to the next node that it is linked to
+    if (list.head !== null) {
+      var oldHead = list.head;
+      list.head = list.head.next;
+      return oldHead.value;
+    }
   };
 
   list.contains = function(target) {
+    //check each node to see if target equals value if so return true
+    //if no nodes contain target return false
+    var currentNode = list.head;
+    if (currentNode.value === target) {
+      return true;
+    } else {
+      for (currentNode in list) {
+        if (list[currentNode].value === target) {
+          return true;
+        }
+      }
+    } 
+    return false;
+    // while(currentNode.next){
+    //   if(currentNode.value === target){
+    //     return true;
+    //   } else {
+    //     currentNode = currentNode.next;
+    //   }
+    // }
+    // return false;
   };
 
   return list;
