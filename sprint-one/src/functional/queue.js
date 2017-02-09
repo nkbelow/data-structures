@@ -20,7 +20,7 @@ var Queue = function() {
       count--;
     }
     var firstOut = storage[Math.min.apply(null, Object.keys(storage))];
-    console.log(firstOut);
+    //console.log(firstOut);
     delete storage[Math.min.apply(null, Object.keys(storage))];
     return firstOut;
   };
