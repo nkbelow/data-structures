@@ -60,7 +60,7 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 Graph.prototype.forEachNode = function(cb) {
   return _.map(this.nodes, function(node) {
     return cb(node);
-  })
+  });
 };
 
 /*
