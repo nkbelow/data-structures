@@ -21,7 +21,9 @@ var LinkedList = function() {
     //assign head to the next node that it is linked to
     if (list.head !== null) {
       var oldHead = list.head;
-      list.head = list.head.next;
+      var newHead = list.head.next;
+      delete list.head;
+      list.head = newHead;
       return oldHead.value;
     }
   };
