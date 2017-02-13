@@ -11,7 +11,6 @@ describe('doublyLinkedList', function() {
     expect(doublyLinkedList.removeHead).to.be.a('function');
     expect(doublyLinkedList.removeTail).to.be.a('function');
     expect(doublyLinkedList.contains).to.be.a('function');
-    doublyLinkedList.isEmpty();
   });
 
   it ('should have head and tail properties', function() {
@@ -24,23 +23,25 @@ describe('doublyLinkedList', function() {
     expect(doublyLinkedList.head.value).to.equal(4);
     doublyLinkedList.addHead(7);
     expect(doublyLinkedList.head.value).to.equal(7);
-    doublyLinkedList.isEmpty();
   });
 
   it ('should add a new tail when new nodes are added', function() {
     doublyLinkedList.addTail(4);
     expect(doublyLinkedList.tail.value).to.equal(4);
     doublyLinkedList.addTail(7);
+   // console.log(doublyLinkedList);
     expect(doublyLinkedList.tail.value).to.equal(7);
-    doublyLinkedList.isEmpty();
   });
 
   it ('should remove old head and reassign head', function() {
     doublyLinkedList.addHead(3);
+    //console.log(doublyLinkedList);
+    doublyLinkedList.addHead(5);
+    //console.log(doublyLinkedList);
+    expect(doublyLinkedList.head.value).to.equal(5);
+    expect(doublyLinkedList.removeHead()).to.equal(5);
+    //console.log(doublyLinkedList);
     expect(doublyLinkedList.head.value).to.equal(3);
-    expect(doublyLinkedList.removeHead()).to.equal(3);
-    expect(doublyLinkedList.head).to.equal(null);
-    doublyLinkedList.isEmpty();
   });
 
   it ('should remove old tail and reassign tail', function() {
@@ -48,14 +49,13 @@ describe('doublyLinkedList', function() {
     expect(doublyLinkedList.tail.value).to.equal(5);
     expect(doublyLinkedList.removeTail()).to.equal(5);
     expect(doublyLinkedList.tail).to.equal(null);
-    doublyLinkedList.isEmpty();
   });
 
   it ('should contain a value that was added', function() {
     doublyLinkedList.addHead(5);
-    console.log(doublyLinkedList);
+    //console.log(doublyLinkedList);
     doublyLinkedList.addTail(3);
-    console.log(doublyLinkedList);
+    //console.log(doublyLinkedList);
     doublyLinkedList.addTail(9);
     doublyLinkedList.addTail(8);
     doublyLinkedList.addTail(4);
@@ -63,6 +63,5 @@ describe('doublyLinkedList', function() {
     expect(doublyLinkedList.contains(5)).to.equal(true);
     expect(doublyLinkedList.contains(8)).to.equal(true);
     expect(doublyLinkedList.contains(65)).to.equal(false);
-    doublyLinkedList.isEmpty();
   });
 });
