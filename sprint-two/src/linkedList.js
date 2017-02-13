@@ -4,62 +4,56 @@ var LinkedList = function() {
   list.tail = null;
 
   list.addToTail = function(value) {
-    //new node creates a node connected to previous node
-    //new node becomes tail node
-    var node = Node(value);
-    if(list.head === null){
-      list.head = node;
+    //create new node
+    //check if head exists
+      //assign newNode to head if list is empty
+    //else assign the next of current tail to newNode
+    //assign newNode to current tail
+    var newNode = Node(value);
+    if (!list.head) {
+      list.head = newNode;
     } else {
-      list.tail.next = node;
+      list.tail.next = newNode;
     }
-    list.tail = node;
-  };
+    list.tail = newNode;
+   };
 
   list.removeHead = function() {
-    //check if list is empty
-    //remove head
-    //assign head to the next node that it is linked to
+    //check if head node exists
+      //if so remove node
+      //assign new head value 
+      //return deleted node value
     if (list.head !== null) {
       var oldHead = list.head;
-      var newHead = list.head.next;
       delete list.head;
-      list.head = newHead;
+      list.head = oldHead.next;
       return oldHead.value;
     }
   };
 
   list.contains = function(target) {
-    //check each node to see if target equals value if so return true
-    //if no nodes contain target return false
+    //check if current node contains value
+    //if not check each following node until null value is reached
     var currentNode = list.head;
-    if (currentNode.value === target) {
-      return true;
-    } else {
-      for (currentNode in list) {
-        if (list[currentNode].value === target) {
-          return true;
-        }
+    while (currentNode) {
+      if (currentNode.value === target) {
+        return true;
+      } else {
+        currentNode = currentNode.next;
       }
-    } 
+    }
     return false;
-    // while(currentNode.next){
-    //   if(currentNode.value === target){
-    //     return true;
-    //   } else {
-    //     currentNode = currentNode.next;
-    //   }
-    // }
-    // return false;
   };
 
   return list;
 };
 
 var Node = function(value) {
+  //create node that has value and next prop
   var node = {};
-
   node.value = value;
   node.next = null;
+
 
   return node;
 };
